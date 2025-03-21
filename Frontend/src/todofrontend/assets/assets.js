@@ -18,7 +18,7 @@ import question_pink from "./question_pink.png";
 import question_white from "./question_white.png";
 import setting_pink from "./setting_pink.png";
 import setting_white from "./setting_white.png";
-import user from "./user.png";
+import userIcon from "./user.png";
 import sign_in_background from "./sign-in-background.jpg";
 import sign_up_background from "./sign-up-background.jpg";
 
@@ -43,7 +43,7 @@ export {
   question_white,
   setting_pink,
   setting_white,
-  user,
+  userIcon,
   sign_in_background,
   sign_up_background,
 };
