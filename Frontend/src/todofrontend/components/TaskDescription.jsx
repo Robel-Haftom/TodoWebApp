@@ -1,4 +1,4 @@
-import { userIcon } from "../assets/assets";
+import { alert_white, delete_icon, edit_2, userIcon } from "../assets/assets";
 
 const TaskDescription = () => {
   return (
@@ -68,12 +68,16 @@ const TaskDescription = () => {
         <span className="font-bold">Task Deadline:</span>End of Day
       </p>
       <div className="flex w-full items-center justify-end gap-4 py-2">
-        <button>
-          <img src={userIcon} alt="delete-icon" className="w-[20px]" />
+        <button className="bg-teal-300 p-2 rounded-md cursor-pointer hover:scale-110 ease-in-out transition-all">
+          <img src={delete_icon} alt="delete-icon" className="w-[20px]" />
         </button>
-        <button>
-          <img src={userIcon} alt="delete-icon" className="w-[20px]" />
+        <button className="bg-teal-300 p-2 rounded-md cursor-pointer hover:scale-110 ease-in-out transition-all">
+          <img src={edit_2} alt="delete-icon" className="w-[20px]" />
+        </button>        
+        <button className="bg-teal-300 p-2 rounded-md cursor-pointer hover:scale-110 ease-in-out transition-all">
+          <img src={alert_white} alt="delete-icon" className="w-[20px]" />
         </button>
+        
       </div>
     </div>
   );

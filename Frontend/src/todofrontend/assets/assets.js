@@ -21,6 +21,20 @@ import setting_white from "./setting_white.png";
 import userIcon from "./user.png";
 import sign_in_background from "./sign-in-background.jpg";
 import sign_up_background from "./sign-up-background.jpg";
+import edit_2 from "./edit_2.png";
+import delete_icon from "./delete.png"
+import bell from "./bell.png";
+import calendar from "./calendar.png";
+import circle_red from "./circle_red.png";
+import circle_green from "./circle_green.png";
+import circle_blue from "./circle_blue.png";
+import dots from "./dots.png";
+import checkmark from "./checkmark.png";
+import pending_tasks from "./pending-tasks.png";
+import walking_dog from "./walking_dog.png";
+import search from "./search.png";
+
+
 
 export {
   alert_pink,
@@ -46,4 +60,17 @@ export {
   userIcon,
   sign_in_background,
   sign_up_background,
+  edit_2,
+  delete_icon,
+  bell,
+  calendar,
+  circle_red,
+  circle_green,
+  circle_blue,
+  dots,
+  checkmark,
+  pending_tasks,
+  walking_dog,
+  search,
+  
 };

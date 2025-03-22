@@ -17,7 +17,7 @@ const SideBar = () => {
     <div className="flex flex-col w-fit h-full mt-12 bg-teal-300 items-center justify-center gap-1 px-8 py-2 text-white rounded-br-lg rounded-tr-lg shadow-md ">
       <div
         onClick={() => navigate("/account")}
-        className="cursor-pointer w-20 h-20 bg-white rounded-full border-double border-2 border-teal-300 overflow-hidden -mt-10"
+        className="cursor-pointer w-20 h-20 bg-white rounded-full border-double border-2 border-teal-300 overflow-hidden -mt-20"
       >
         <img
           src={userIcon}
