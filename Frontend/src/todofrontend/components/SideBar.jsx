@@ -14,8 +14,11 @@ import { useNavigate } from "react-router-dom";
 const SideBar = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col w-fit h-full mt-12 bg-teal-300 items-center justify-center gap-1 px-8 py-2 text-white rounded-br-lg rounded-tr-lg shadow-md">
-      <div className="w-20 h-20 bg-white rounded-full border-double border-2 border-teal-300 overflow-hidden -mt-10">
+    <div className="flex flex-col w-fit h-full mt-12 bg-teal-300 items-center justify-center gap-1 px-8 py-2 text-white rounded-br-lg rounded-tr-lg shadow-md ">
+      <div
+        onClick={() => navigate("/account")}
+        className="cursor-pointer w-20 h-20 bg-white rounded-full border-double border-2 border-teal-300 overflow-hidden -mt-10"
+      >
         <img
           src={userIcon}
           alt="profile picture"
@@ -61,7 +64,7 @@ const SideBar = () => {
           <p className="flex-1 ">Help</p>
         </div>
       </div>
-      <div className="flex w-full flex-col self-start items-start justify-start gap-31">
+      <div className="flex w-full flex-col self-start items-start justify-start gap-25">
         <div className="flex-1"></div>
         <div className="flex w-full items-start justify-start self-end- px-6 py-2 gap-2 rounded-lg hover:bg-white hover:text-teal-300">
           <img src={logout_pink} alt="dashboard" className="w-[35px]" />

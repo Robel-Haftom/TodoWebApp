@@ -3,7 +3,7 @@ import { userIcon } from "../assets/assets";
 
 const TaskCard = () => {
   return (
-    <div className="flex gap-2 items-start justify-evenly py-1 px-2 border-2 border-gray-500 rounded-xl shadow-lg max-w-96">
+    <div className="flex gap-2 items-start justify-evenly py-1 px-2 border-2 border-gray-500 rounded-xl shadow-lg">
       <img src={userIcon} alt="task-status" className="w-[15px] h-[15px]" />
       <div className="flex flex-col">
         <div className="flex ">

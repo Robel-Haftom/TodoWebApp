@@ -2,9 +2,9 @@ import { userIcon } from "../assets/assets";
 
 const TaskDescription = () => {
   return (
-    <div className="flex flex-col gap-2 items-start justify-evenly py-1 px-2 rounded-xl">
+    <div className="flex flex-col gap-2 items-start justify-evenly py-4 px-6 rounded-xl shadow-2xl overflow-y-scroll">
       <div className="flex items-end gap-4 ">
-        <div className="w-[150px] rounded-md overflow-hidden bg-red-400">
+        <div className="w-[150px] rounded-md overflow-hidden bg-teal-300">
           <img
             src={userIcon}
             alt="task-status"
@@ -25,7 +25,7 @@ const TaskDescription = () => {
         <span className="font-bold"> Objective: </span>the objective of the task
         is here
       </p>
-      <p className="max-w-[500px]">
+      <p className="max-w-[700px]">
         <span className="font-bold">Task Description:</span> Lorem ipsum dolor
         sit amet consectetur adipisicing elit. Cum molestias quo atque, placeat
         omnis tempora, dolore autem, blanditiis dolores itaque incidunt
@@ -38,7 +38,17 @@ const TaskDescription = () => {
         beatae, magnam debitis ut omnis esse soluta illum reiciendis aliquid
         maiores quia id! Ducimus consectetur dicta obcaecati officiis error
         perspiciatis voluptate quos, eligendi saepe facere hic totam
-        necessitatibus!
+        necessitatibus! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Officiis repellendus non ab deserunt tempora quae, voluptates rerum
+        nulla quibusdam numquam. Facilis recusandae ipsum porro aperiam, autem
+        corrupti ipsa earum expedita vitae quibusdam rerum ullam, architecto ea.
+        Veniam dolores similique facere, quis reiciendis numquam illum porro
+        corrupti adipisci, quia cumque error nemo nam ratione recusandae
+        cupiditate neque molestiae omnis rerum quibusdam nesciunt incidunt odio.
+        Distinctio laudantium id ducimus et tempore consectetur sunt ratione
+        deserunt, non quis quae temporibus laboriosam voluptatem incidunt soluta
+        consequatur aliquam repellendus delectus suscipit sed ipsum a. Eveniet
+        possimus iusto nemo accusamus molestias. Sed quas sit atque dolores.
       </p>
       <p>
         <span className="font-bold">Additional Notes:</span>

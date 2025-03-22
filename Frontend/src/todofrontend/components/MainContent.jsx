@@ -3,11 +3,11 @@ import TaskCard from "./TaskCard";
 
 const MainContent = () => {
   return (
-    <div className="p-4">
+    <div className="p-4 w-full">
       <div>
         <h1 className="text-2xl font-semibold p-2">Welcome back, User Name</h1>
       </div>
-      <div className="flex gap-8 shadow-2xl border border-gray-500 px-8 py-3  rounded-md">
+      <div className="flex gap-8 shadow-2xl border border-gray-200 px-8 py-4 rounded-md">
         <div className="flex flex-col gap-2 border-gray-400 shadow-2xl p-2 rounded-lg">
           <div className="border-b-4  border-gray-200 ">
             <div className="flex items-center justify-between rounded-md ">

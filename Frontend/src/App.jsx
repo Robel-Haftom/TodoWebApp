@@ -6,17 +6,21 @@ import SideBar from "./todofrontend/components/SideBar";
 import MainContent from "./todofrontend/components/MainContent";
 import MyTask from "./todofrontend/components/MyTask";
 import VitalTask from "./todofrontend/components/VitalTask";
+import AccountInfo from "./todofrontend/components/AccountInfo";
+import ChangePassword from "./todofrontend/components/ChangePassword";
 
 function App() {
   return (
-    <div className="flex flex-col w-full max-h-screen ">
+    <div className="flex flex-col w-full max-h-screen">
       <NavBar />
-      <div className="flex w-full gap-4 mt-4">
+      <div className="flex w-full max-h-[650px] gap-4 mt-4">
         <SideBar />
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/myTask" element={<MyTask />} />
           <Route path="/vital" element={<VitalTask />} />
+          <Route path="/account" element={<AccountInfo />} />
+          <Route path="/changePassword" element={<ChangePassword />} />
         </Routes>
       </div>
     </div>
