@@ -34,6 +34,10 @@ const taskSchema = new mongoose.Schema(
     reminder: {
       type: Date,
     },
+    image: {
+      type: String,
+      default: "",
+    },
   },
   {
     timestamps: true,

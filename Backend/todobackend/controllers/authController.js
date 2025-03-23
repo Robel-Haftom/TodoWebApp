@@ -4,9 +4,9 @@ import jwt from "jsonwebtoken";
 import transporter from "../config/nodemailer.js";
 
 export const userRegistration = async (req, res) => {
-  const { userName, email, password } = req.body;
+  const { firstName, lastName, userName, email, password } = req.body;
 
-  if (!userName || !email || !password) {
+  if (!userName || !email || !password || !firstName || !lastName) {
     return res.status(400).json({ message: "All the fields are required" });
   }
 
@@ -28,7 +28,13 @@ export const userRegistration = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = new User({ userName, email, password: hashedPassword });
+    const newUser = new User({
+      firstName,
+      lastName,
+      userName,
+      email,
+      password: hashedPassword,
+    });
     await newUser.save();
 
     const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRETE, {
@@ -37,7 +43,6 @@ export const userRegistration = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      domain: "localhost",
       secure: process.env.NODE_ENV === "production",
       sameSite: process.env.NODE_ENV === "production" ? "none" : "Lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
@@ -51,9 +56,9 @@ export const userRegistration = async (req, res) => {
     };
 
     await transporter.sendMail(mailOption);
-    return res.status(201).json({ success: true, data: newUser });
+    return res.json({ success: true, data: newUser });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    return res.json({ success: false, message: error.message });
   }
 };
 
@@ -84,7 +89,6 @@ export const login = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      domain: "localhost",
       secure: process.env.NODE_ENV === "production",
       sameSite: process.env.NODE_ENV === "production" ? "none" : "Lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
@@ -100,7 +104,6 @@ export const logout = async (req, res) => {
   try {
     res.clearCookie("token", {
       httpOnly: true,
-      domain: "localhost",
       secure: process.env.NODE_ENV === "production",
       sameSite: process.env.NODE_ENV === "production" ? "none" : "Lax",
     });

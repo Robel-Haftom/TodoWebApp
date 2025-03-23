@@ -1,10 +1,12 @@
 import Task from "../models/task.model.js";
+import mongoose from "mongoose";
+
 export const getTasks = async (req, res) => {
   try {
     const tasks = await Task.find({});
-    res.status(200).json({ succuss: true, data: tasks });
+    return res.status(200).json({ succuss: true, data: tasks });
   } catch (error) {
-    res
+    return res
       .status(500)
       .json({ succuss: false, message: "Error in fetching Tasks" });
   }
@@ -14,16 +16,18 @@ export const createTask = async (req, res) => {
   const task = req.body;
 
   if (!task.title) {
-    res.status(400).json({ message: "Title is required" });
+    return res.status(400).json({ message: "Title is required" });
   }
 
   const newTask = new Task(task);
 
   try {
     await newTask.save();
-    res.status(201).json({ succuss: true, data: newTask });
+    return res.status(201).json({ succuss: true, data: newTask });
   } catch (error) {
-    res.status(500).json({ succuss: false, message: "Error in creating task" });
+    return res
+      .status(500)
+      .json({ succuss: false, message: "Error in creating task" });
   }
 };
 
@@ -36,11 +40,11 @@ export const deleteTask = async (req, res) => {
 
   try {
     await Task.findByIdAndDelete(id);
-    res
+    return res
       .status(201)
       .json({ succuss: true, message: "Task deleted successfully" });
   } catch (error) {
-    res.status(500).json({ succuss: false, message: "Server error" });
+    return res.status(500).json({ succuss: false, message: "Server error" });
   }
 };
 
@@ -49,13 +53,13 @@ export const editTask = async (req, res) => {
   const task = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    res.status(400).json({ succuss: false, message: "Invalid Task ID" });
+    return res.status(400).json({ succuss: false, message: "Invalid Task ID" });
   }
 
   try {
     const updatedTask = await Task.findByIdAndUpdate(id, task, { new: true });
-    res.status(200).json({ succuss: true, data: updatedTask });
+    return res.status(200).json({ succuss: true, data: updatedTask });
   } catch (error) {
-    res.status(500).json({ succuss: false, message: "Server error" });
+    return res.status(500).json({ succuss: false, message: "Server error" });
   }
 };
