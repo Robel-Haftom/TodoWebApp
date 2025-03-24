@@ -10,24 +10,28 @@ import {
   userIcon,
 } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
+import { useUserStore } from "../../../store/users";
 
 const SideBar = () => {
   const navigate = useNavigate();
+
+  const { user, isLogged } = useUserStore();
+
   return (
-    <div className="flex flex-col w-fit h-full mt-12 bg-teal-300 items-center justify-center gap-1 px-8 py-2 text-white rounded-br-lg rounded-tr-lg shadow-md ">
+    <div className=" relative flex flex-col w-fit h-full mt-12 bg-teal-300 items-center justify-center gap-1 px-4 py-2 text-white rounded-br-lg rounded-tr-lg shadow-md ">
       <div
         onClick={() => navigate("/account")}
-        className="cursor-pointer w-20 h-20 bg-white rounded-full border-double border-2 border-teal-300 overflow-hidden -mt-20"
+        className=" absolute -top-8 cursor-pointer w-20 h-20 bg-white rounded-full border-double border-2 border-teal-300 overflow-hidden"
       >
         <img
-          src={userIcon}
+          src={user?.image || userIcon}
           alt="profile picture"
           className="w-full h-full object-cover "
         />
       </div>
       <div className="flex flex-col items-center justify-center ">
-        <h3 className="text-xl font-semibold">User Name</h3>
-        <p>User email address</p>
+        <h3 className="text-xl font-semibold">{user?.image}</h3>
+        <p>{user?.email}</p>
       </div>
       <div className="flex flex-col items-center justify-start gap-1">
         <div

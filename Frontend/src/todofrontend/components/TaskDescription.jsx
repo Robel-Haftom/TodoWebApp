@@ -50,8 +50,8 @@ const TaskDescription = () => {
         consequatur aliquam repellendus delectus suscipit sed ipsum a. Eveniet
         possimus iusto nemo accusamus molestias. Sed quas sit atque dolores.
       </p>
-      <p>
-        <span className="font-bold">Additional Notes:</span>
+      <div>
+        <p className="font-bold">Additional Notes:</p>
         <ul className="list-disc">
           <li className="">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, odio.
@@ -63,7 +63,7 @@ const TaskDescription = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, odio.
           </li>
         </ul>
-      </p>
+      </div>
       <p>
         <span className="font-bold">Task Deadline:</span>End of Day
       </p>
@@ -73,11 +73,10 @@ const TaskDescription = () => {
         </button>
         <button className="bg-teal-300 p-2 rounded-md cursor-pointer hover:scale-110 ease-in-out transition-all">
           <img src={edit_2} alt="delete-icon" className="w-[20px]" />
-        </button>        
+        </button>
         <button className="bg-teal-300 p-2 rounded-md cursor-pointer hover:scale-110 ease-in-out transition-all">
           <img src={alert_white} alt="delete-icon" className="w-[20px]" />
         </button>
-        
       </div>
     </div>
   );
