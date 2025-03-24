@@ -13,10 +13,16 @@ export const getTasks = async (req, res) => {
 };
 
 export const createTask = async (req, res) => {
-  const task = req.body;
+  const { task, description, dueDate, priority, image } = req.body;
 
-  if (!task.title) {
-    return res.status(400).json({ message: "Title is required" });
+  if (!task.title || task.description || task.dueDate || task.priority) {
+    return res.status(400).json({ message: "All the fields are required" });
+  }
+  if (task.priority !== "low" || task.priority !== "medium" || task.priority !== "high") {
+    return res.status(400).json({ message: "Invalid priority" });
+  }
+  if (task.dueDate < Date.now()) {
+    return res.status(400).json({ message: "Invalid due date" });
   }
 
   const newTask = new Task(task);

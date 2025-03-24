@@ -1,11 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { calendar } from "../assets/assets";
 import { useRef, useState } from "react";
+import { useTaskStore } from "../../../store/tasks";
 
 const AddNewTask = () => {
   const [selectedImage, setSelectedImage] = useState();
   const fileInputRef = useRef();
-
+  const { createTask } = useTaskStore()
+  const navigate = useNavigate()
+  const [taskData, setTaskData] = useState({
+    title: "",
+    description: "",
+    dueDate: "",
+    priority: "",
+    Image: "",
+  });
   const handleSelectedImage = (e) => {
     if (e.target.files[0]) {
       setSelectedImage(URL.createObjectURL(e.target.files[0]));
@@ -94,7 +103,7 @@ const AddNewTask = () => {
             </div>
           </div>
           <div className="flex gap-4 items-center mt-2">
-            <button className="rounded bg-teal-300 text-white font-semibold px-5 py-2 hover:text-teal-300 hover:bg-white hover:shadow-md border-teal-300 border transition-all cursor-pointer">
+            <button onClick={() => createTask(taskData, navigate)} className="rounded bg-teal-300 text-white font-semibold px-5 py-2 hover:text-teal-300 hover:bg-white hover:shadow-md border-teal-300 border transition-all cursor-pointer">
               Done
             </button>
           </div>
