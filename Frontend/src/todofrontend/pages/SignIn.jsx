@@ -1,12 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import { padlock_lock, sign_in_background, userIcon } from "../assets/assets";
 import { useState } from "react";
+import { useUserStore } from "../../../store/users";
 
 const SignIn = () => {
+  const { login } = useUserStore();
   const navigate = useNavigate();
-
   const [userInput, setUserInput] = useState({
-    userName: "",
+    email: "",
     password: "",
   });
   return (
@@ -28,19 +29,19 @@ const SignIn = () => {
             <div className="flex border border-gray-600 rounded-md p-2 gap-3 md:min-w-96">
               <img src={userIcon} alt="edit-icon" className="w-[25px] " />
               <input
-                type="text"
+                type="email"
                 placeholder="Enter User Name"
                 className="focus:outline-none"
-                value={userInput.userName}
+                value={userInput.email}
                 onChange={(e) =>
-                  setUserInput({ ...userInput, userName: e.target.value })
+                  setUserInput({ ...userInput, email: e.target.value })
                 }
               />
             </div>
             <div className="flex border border-gray-600 rounded-md p-2 gap-3 md:min-w-96">
               <img src={padlock_lock} alt="edit-icon" className="w-[25px] " />
               <input
-                type="text"
+                type="password"
                 placeholder="Enter Password"
                 className="focus:outline-none"
                 value={userInput.password}
@@ -55,7 +56,7 @@ const SignIn = () => {
             <p>Remember me</p>
           </div>
           <button
-            onClick={() => navigate("/register")}
+            onClick={() => login(userInput, navigate)}
             className="cursor-pointer bg-teal-300 px-3 py-2 md:px-8 md:py-3 rounded-sm shadow-xs shadow-gray-500 text-white md:font-semibold text-lg hover:text-teal-300 hover:bg-white hover:shadow-md border-teal-300 border transition-all"
           >
             Login
@@ -70,13 +71,11 @@ const SignIn = () => {
           </div>
           <p>
             Don't have an account ?{" "}
-            <Link to="/register">
-              <a
-                href="#home"
-                className="text-blue-500 font-medium hover:underline visited:text-blue-800 active:text-blue-500"
-              >
-                Create One
-              </a>
+            <Link
+              to="/register"
+              className="text-blue-500 font-medium hover:underline visited:text-blue-800 active:text-blue-500"
+            >
+              Create One
             </Link>
           </p>
         </div>

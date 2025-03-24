@@ -8,6 +8,7 @@ import {
   userIcon,
 } from "../assets/assets";
 import { Link, useNavigate } from "react-router-dom";
+import { useUserStore } from "../../../store/users";
 
 const SignUp = () => {
   const [user, setUser] = useState({
@@ -19,6 +20,7 @@ const SignUp = () => {
     confirmPassword: "",
   });
 
+  const { createUser } = useUserStore();
   const navigate = useNavigate();
 
   return (
@@ -107,17 +109,18 @@ const SignUp = () => {
             <p>I agree to all the terms</p>
           </div>
           <button
-            onClick={() => navigate("/login")}
+            onClick={() => createUser(user, navigate)}
             className="cursor-pointer bg-teal-300 px-3 py-2 md:px-8 md:py-3 rounded-sm shadow-xs shadow-gray-500 text-white md:font-semibold text-lg hover:text-teal-300 hover:bg-white hover:shadow-md border-teal-300 border transition-all"
           >
             Register
           </button>
           <p>
             Already have an account ?{" "}
-            <Link to="/login">
-              <a className="text-blue-500 font-medium hover:underline visited:text-blue-800 active:text-blue-500">
-                Sign in
-              </a>
+            <Link
+              to="/login"
+              className="text-blue-500 font-medium hover:underline visited:text-blue-800 active:text-blue-500"
+            >
+              Sign in
             </Link>
           </p>
         </div>
