@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { circle_blue, dots, userIcon, walking_dog } from "../assets/assets";
 
 const TaskCard = ({
+  taskId,
   taskTitle,
   taskPriority,
   taskDescription,
@@ -12,7 +13,7 @@ const TaskCard = ({
   const navigate = useNavigate();
   return (
     <div
-      onClick={() => navigate("/task")}
+      onClick={() => navigate(`/task/${taskId}`)}
       className="flex gap-2 items-start justify-evenly py-1 px-2 border-2 border-gray-300 rounded-xl shadow-lg cursor-pointer"
     >
       <img

@@ -35,7 +35,7 @@ const SideBar = () => {
       </div>
       <div className="flex flex-col items-center justify-start gap-1">
         <div
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/dashboard")}
           className="flex w-full items-center justify-between px-6 py-2 gap-8 cursor-pointer rounded-lg hover:bg-white hover:text-teal-300"
         >
           <img src={dashboard_pink} alt="dashboard" className="w-[35px]" />

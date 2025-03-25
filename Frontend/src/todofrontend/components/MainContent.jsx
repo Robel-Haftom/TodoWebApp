@@ -47,6 +47,7 @@ const MainContent = () => {
               {tasks.map((task) => (
                 <TaskCard
                   key={task._id}
+                  taskId={task._id}
                   taskTitle={task.title}
                   taskDescription={task.description}
                   taskStatus={task.status}
