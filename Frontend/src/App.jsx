@@ -10,7 +10,7 @@ import AccountInfo from "./todofrontend/components/AccountInfo";
 import ChangePassword from "./todofrontend/components/ChangePassword";
 import UpdateInfo from "./todofrontend/components/UpdateInfo";
 import TaskView from "./todofrontend/components/TaskView";
-import AddNewTask from "./todofrontend/components/AddNewTask"
+import AddNewTask from "./todofrontend/components/AddNewTask";
 import { ToastContainer } from "react-toastify";
 
 function App() {
@@ -19,12 +19,12 @@ function App() {
       <ToastContainer />
       <div className="flex flex-col w-full h-screen">
         <NavBar />
-        <div className="flex w-full max-h-[650px] gap-4 mt-4">
+        <div className="flex w-full h-full max-h-[650px] gap-4 mt-4">
           <SideBar />
           <Routes>
-            <Route path="/" element={<MainContent />} />
+            <Route path="/dashboard" element={<MainContent />} />
             <Route path="/myTask" element={<MyTask />} />
-            <Route path="/task" element={<TaskView />} />
+            <Route path="/task/:id" element={<TaskView />} />
             <Route path="/vital" element={<VitalTask />} />
             <Route path="/account" element={<AccountInfo />} />
             <Route path="/updateInfo" element={<UpdateInfo />} />

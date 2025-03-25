@@ -6,15 +6,18 @@ import { useTaskStore } from "../../../store/tasks";
 const AddNewTask = () => {
   const [selectedImage, setSelectedImage] = useState();
   const fileInputRef = useRef();
-  const { createTask } = useTaskStore()
-  const navigate = useNavigate()
+  const [taskStatus, setTaskStatus] = useState();
+  const { createTask } = useTaskStore();
+  const navigate = useNavigate();
   const [taskData, setTaskData] = useState({
     title: "",
     description: "",
     dueDate: "",
     priority: "",
-    Image: "",
+    status: taskStatus,
+    Image: selectedImage,
   });
+
   const handleSelectedImage = (e) => {
     if (e.target.files[0]) {
       setSelectedImage(URL.createObjectURL(e.target.files[0]));
@@ -33,26 +36,52 @@ const AddNewTask = () => {
           <p className="font-semibold">Title</p>
           <input
             type="text"
+            value={taskData.title}
+            onChange={(e) =>
+              setTaskData({ ...taskData, title: e.target.value })
+            }
             className="focus:outline-none px-4 max-w-6/10 border border-gray-400  rounded-sm py-1"
           />
           <p className="font-semibold">Date</p>
           <input
             type="date"
+            value={taskData.dueDate}
+            onChange={(e) =>
+              setTaskData({ ...taskData, dueDate: e.target.value })
+            }
             className="focus:outline-none px-4 max-w-6/10 border border-gray-400  rounded-sm py-1"
           />
           <p className="font-semibold">Priorities</p>
           <div className="max-w-6/10 flex items-center justify-start gap-8">
             <div className="flex gap-2 items-center ">
-              <p>* Extreme</p>
-              <input type="checkbox" className="scale-120 px-4" />
+              <p>Extreme</p>
+              <input
+                type="radio"
+                name="status"
+                value="Extreme"
+                onChange={(e) => setTaskStatus(e.target.value)}
+                className="scale-120 px-4"
+              />
             </div>
             <div className="flex gap-2 items-center ">
               <p>Moderate</p>
-              <input type="checkbox" className="scale-120 px-4" />
+              <input
+                type="radio"
+                name="status"
+                value="Moderate"
+                onChange={(e) => setTaskStatus(e.target.value)}
+                className="scale-120 px-4"
+              />
             </div>
             <div className="flex gap-2 items-center ">
               <p>Low</p>
-              <input type="checkbox" className="scale-120 px-4" />
+              <input
+                type="radio"
+                name="status"
+                value="Low"
+                onChange={(e) => setTaskStatus(e.target.value)}
+                className="scale-120 px-4"
+              />
             </div>
           </div>
           <div className="flex gap-12 w-full items-center">
@@ -62,6 +91,13 @@ const AddNewTask = () => {
                 className="focus:outline-none px-4 border border-gray-400  rounded-sm py-1"
                 cols="30"
                 rows="8"
+                value={taskData.description}
+                onChange={(e) =>
+                  setTaskData({
+                    ...taskData,
+                    description: e.target.value,
+                  })
+                }
               ></textarea>
             </div>
             <div className="flex flex-col gap-2 px-4 ">
@@ -85,7 +121,10 @@ const AddNewTask = () => {
                     <div className="flex flex-col gap-2 items-center justify-center">
                       <img src={calendar} alt="image loader" className="w-20" />
                       <p>Drag and drop files here</p>
-                      <button className="border border-black px-4 py-2 rounded-lg cursor-pointer hover:opacity-50">
+                      <button
+                        onClick={() => fileInputRef.current.click()}
+                        className="border border-black px-4 py-2 rounded-lg cursor-pointer hover:opacity-50"
+                      >
                         Browse
                       </button>
                     </div>
@@ -103,7 +142,12 @@ const AddNewTask = () => {
             </div>
           </div>
           <div className="flex gap-4 items-center mt-2">
-            <button onClick={() => createTask(taskData, navigate)} className="rounded bg-teal-300 text-white font-semibold px-5 py-2 hover:text-teal-300 hover:bg-white hover:shadow-md border-teal-300 border transition-all cursor-pointer">
+            <button
+              onClick={() => {
+                console.log(taskData), createTask(taskData, navigate);
+              }}
+              className="rounded bg-teal-300 text-white font-semibold px-5 py-2 hover:text-teal-300 hover:bg-white hover:shadow-md border-teal-300 border transition-all cursor-pointer"
+            >
               Done
             </button>
           </div>

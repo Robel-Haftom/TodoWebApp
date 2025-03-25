@@ -4,36 +4,37 @@ import mongoose from "mongoose";
 export const getTasks = async (req, res) => {
   try {
     const tasks = await Task.find({});
-    return res.status(200).json({ succuss: true, data: tasks });
+    return res.status(200).json({ success: true, data: tasks });
   } catch (error) {
     return res
       .status(500)
-      .json({ succuss: false, message: "Error in fetching Tasks" });
+      .json({ success: false, message: "Error in fetching Tasks" });
   }
 };
 
 export const createTask = async (req, res) => {
-  const { task, description, dueDate, priority, image } = req.body;
+  const { title, description, dueDate, image } = req.body;
 
-  if (!task.title || task.description || task.dueDate || task.priority) {
+  if (!title || !description) {
     return res.status(400).json({ message: "All the fields are required" });
   }
-  if (task.priority !== "low" || task.priority !== "medium" || task.priority !== "high") {
-    return res.status(400).json({ message: "Invalid priority" });
-  }
-  if (task.dueDate < Date.now()) {
-    return res.status(400).json({ message: "Invalid due date" });
-  }
+  // if (priority !== "low" || priority !== "medium" || priority !== "high") {
+  //   return res.status(400).json({ message: "Invalid priority" });
+  // }
+  // if (dueDate < Date.now()) {
+  //   return res.status(400).json({ message: "Invalid due date" });
+  // }
 
-  const newTask = new Task(task);
+  const taskData = { title, description, dueDate, image };
+  const newTask = new Task(taskData);
 
   try {
     await newTask.save();
-    return res.status(201).json({ succuss: true, data: newTask });
+    return res.status(201).json({ success: true, data: newTask });
   } catch (error) {
     return res
       .status(500)
-      .json({ succuss: false, message: "Error in creating task" });
+      .json({ success: false, message: "Error in creating task: ", error });
   }
 };
 
@@ -41,16 +42,16 @@ export const deleteTask = async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({ succuss: false, message: "Invalid Task ID" });
+    return res.status(400).json({ success: false, message: "Invalid Task ID" });
   }
 
   try {
     await Task.findByIdAndDelete(id);
     return res
       .status(201)
-      .json({ succuss: true, message: "Task deleted successfully" });
+      .json({ success: true, message: "Task deleted successfully" });
   } catch (error) {
-    return res.status(500).json({ succuss: false, message: "Server error" });
+    return res.status(500).json({ success: false, message: "Server error" });
   }
 };
 
@@ -59,13 +60,13 @@ export const editTask = async (req, res) => {
   const task = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({ succuss: false, message: "Invalid Task ID" });
+    return res.status(400).json({ success: false, message: "Invalid Task ID" });
   }
 
   try {
     const updatedTask = await Task.findByIdAndUpdate(id, task, { new: true });
-    return res.status(200).json({ succuss: true, data: updatedTask });
+    return res.status(200).json({ success: true, data: updatedTask });
   } catch (error) {
-    return res.status(500).json({ succuss: false, message: "Server error" });
+    return res.status(500).json({ success: false, message: "Server error" });
   }
 };
